@@ -1,8 +1,8 @@
-import CurrencyConverter from '../apis/currency-converter'
-import { User } from '../entities/user.entity'
-import { MainDataSource } from '../orm/data-source'
-import { Currency } from '../utils/currencies'
-import { sendCurrencyRateEmail } from './email.service'
+import CurrencyConverter from '../apis/currency-converter.js'
+import { User } from '../entities/user.entity.js'
+import { MainDataSource } from '../orm/data-source.js'
+import { Currency } from '../utils/currencies.js'
+import { sendCurrencyRateEmail } from './email.service.js'
 
 export const getUserByEmail = async (email: string): Promise<User | null> => {
     const userRepository = MainDataSource.getRepository(User)

@@ -43,10 +43,6 @@ export class EnvironmentVariables {
 
     @Expose()
     @IsString()
-    SMTP_SERVICE: string | undefined
-
-    @Expose()
-    @IsString()
     SMTP_USER: string | undefined
 
     @Expose()

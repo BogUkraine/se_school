@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { Currency } from '../utils/currencies'
+import { Currency } from '../utils/currencies.js'
 
 export default class CurrencyConverter {
     private static async getCurrenciesList(): Promise<NBUCurrencyObject[] | []> {

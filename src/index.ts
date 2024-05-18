@@ -1,11 +1,11 @@
 import 'reflect-metadata'
 import express, { Application, Request, Response } from 'express'
-import { config } from './configs/load-config'
-import mainRouter from './routes/index.route'
-import { MainDataSource } from './orm/data-source'
+import { config } from './configs/load-config.js'
+import mainRouter from './routes/index.route.js'
+import { MainDataSource } from './orm/data-source.js'
 import bodyParser from 'body-parser'
-import { startCronJobs } from './services/cron.service'
-import { exitHandler } from './utils/error-handling'
+import { startCronJobs } from './services/cron.service.js'
+import { exitHandler } from './utils/error-handling.js'
 
 export const app: Application = express()
 const PORT = config.PORT || 8000

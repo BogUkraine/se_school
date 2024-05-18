@@ -23,8 +23,8 @@ const ormConfig: DataSourceOptions = {
 
     synchronize: false,
     logging: process.env.NODE_ENV === NODE_ENV.development ? true : false, // logging logs sql command on the treminal
-    entities: ['src/entities/*.ts'],
-    migrations: ['src/migrations/*.ts'],
+    entities: ['src/entities/*.ts', 'dist/entities/*.js'],
+    migrations: ['src/migrations/*.ts', 'dist/migrations/*.js'],
     migrationsTableName: 'migrations',
     subscribers: [],
 }

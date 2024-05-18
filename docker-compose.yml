@@ -1,0 +1,53 @@
+version: '3.5'
+
+services:
+    app:
+        build:
+            context: .
+            dockerfile: Dockerfile
+        depends_on:
+            postgres:
+                condition: service_started
+        ports:
+            - '${PORT}:${PORT}'
+        env_file:
+            - .env.production
+        networks:
+            - se_school_prod
+    postgres:
+        container_name: postgres_container
+        image: postgres:16
+        environment:
+            POSTGRES_USER: ${DB_USERNAME}
+            POSTGRES_PASSWORD: ${DB_PASSWORD}
+            PGDATA: /data/postgres
+        volumes:
+            - se_school_prod_postgres:/data/postgres
+        ports:
+            - '${DB_PORT}:5432'
+        networks:
+            - se_school_prod
+        restart: unless-stopped
+
+    pgadmin: # I use dbeaver locally, but for the consistency of the setup it is here
+        container_name: pgadmin_container
+        image: dpage/pgadmin4
+        environment:
+            PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL:-pgadmin4@pgadmin.org}
+            PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD:-admin}
+            PGADMIN_CONFIG_SERVER_MODE: 'False'
+        volumes:
+            - se_school_prod_pgadmin:/var/lib/pgadmin
+        ports:
+            - '${PGADMIN_PORT:-5050}:80'
+        networks:
+            - se_school_prod
+        restart: unless-stopped
+
+networks:
+    se_school_prod:
+        driver: bridge
+
+volumes:
+    se_school_prod_postgres:
+    se_school_prod_pgadmin:

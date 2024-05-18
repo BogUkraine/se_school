@@ -2,7 +2,7 @@ import * as dotenv from 'dotenv'
 import * as path from 'path'
 import { validateSync } from 'class-validator'
 import { plainToClass } from 'class-transformer'
-import { EnvironmentVariables, NODE_ENV } from './env-variables'
+import { EnvironmentVariables, NODE_ENV } from './env-variables.js'
 
 const nodeEnv = process.env.NODE_ENV || NODE_ENV.development
 

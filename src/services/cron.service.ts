@@ -1,5 +1,5 @@
 import { CronJob } from 'cron'
-import { sendAnEmailToSubscribers } from './index.service'
+import { sendAnEmailToSubscribers } from './index.service.js'
 
 enum TimeRange {
     EVERY_SECOND = '* * * * * *',

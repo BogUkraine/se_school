@@ -1,8 +1,8 @@
 import { Request, Response } from 'express'
-import { getUserByEmail, subscribe } from '../services/index.service'
+import { getUserByEmail, subscribe } from '../services/index.service.js'
 import { IsEmail, validate } from 'class-validator'
-import CurrencyConverter from '../apis/currency-converter'
-import { Currency } from '../utils/currencies'
+import CurrencyConverter from '../apis/currency-converter.js'
+import { Currency } from '../utils/currencies.js'
 
 export const mainController = async (req: Request, res: Response) => {
     return res.send(200)

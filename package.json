@@ -9,8 +9,9 @@
     "start": "npm run migration:run && NODE_ENV=development tsx src/index.ts",
     "dev": "NODE_ENV=development tsx watch src/index.ts",
     "build": "tsc",
+    "prod": "NODE_ENV=production node ./dist/index.js",
     "env:dev": "docker-compose --project-directory ./ -f ./environments/dev.yaml --env-file ./.env.development up",
-    "env:prod": "docker-compose --project-directory ./ -f ./environments/prod.yaml --env-file ./.env.production up",
+    "env:prod": "docker-compose --project-directory ./ --env-file ./.env.production up",
     "prepare": "husky install",
     "lint": "eslint ./src",
     "format": "prettier .",
@@ -18,6 +19,7 @@
     "typeorm": "typeorm-ts-node-esm",
     "migration:create": "npm run typeorm migration:create",
     "migration:run": "npm run typeorm migration:run -- -d ./src/orm/data-source.ts",
+    "migration:prod:run": "npm run typeorm migration:run -- -d ./dist/orm/data-source.js",
     "migration:revert": "npm run typeorm migration:revert -- -d ./src/orm/data-source.ts"
   },
   "author": "",

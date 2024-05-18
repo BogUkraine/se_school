@@ -1,5 +1,5 @@
-import { terminateDBConnection } from '../orm/data-source'
-import { stopCronJobs } from '../services/cron.service'
+import { terminateDBConnection } from '../orm/data-source.js'
+import { stopCronJobs } from '../services/cron.service.js'
 
 const terminate = (options = { coredump: false, timeout: 1000 }) => {
     const exit = (code: number) => {
