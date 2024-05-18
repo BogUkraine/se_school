@@ -18,6 +18,9 @@
         "project": "./tsconfig.json"
     },
     "rules": {
+        "import/extensions": [
+            "never"
+        ],
         "quotes": [
             "error",
             "single"

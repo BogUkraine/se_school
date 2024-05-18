@@ -1,0 +1,40 @@
+version: '3.5'
+
+services:
+    postgres:
+        container_name: postgres_container
+        image: postgres:16
+        environment:
+            POSTGRES_USER: ${DB_USERNAME}
+            POSTGRES_PASSWORD: ${DB_PASSWORD}
+            PGDATA: /data/postgres
+        volumes:
+            - se_school_postgres:/data/postgres
+        ports:
+            - '${DB_PORT}:5432'
+        networks:
+            - se_school
+        restart: unless-stopped
+
+    pgadmin: # I use dbeaver locally, but for the consistency of the setup it is here
+        container_name: pgadmin_container
+        image: dpage/pgadmin4
+        environment:
+            PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL:-pgadmin4@pgadmin.org}
+            PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD:-admin}
+            PGADMIN_CONFIG_SERVER_MODE: 'False'
+        volumes:
+            - se_school_pgadmin:/var/lib/pgadmin
+        ports:
+            - '${PGADMIN_PORT:-5050}:80'
+        networks:
+            - se_school
+        restart: unless-stopped
+
+networks:
+    se_school:
+        driver: bridge
+
+volumes:
+    se_school_postgres:
+    se_school_pgadmin:

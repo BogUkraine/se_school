@@ -1,8 +1,10 @@
 import { Router } from 'express'
-import { mainController } from '../controllers/index.controller'
+import { mainController, rateController, subscriptionController } from '../controllers/index.controller'
 
 const router = Router()
 
-router.get('/index', mainController)
+router.get('/', mainController)
+router.get('/rate', rateController)
+router.post('/subscribe', subscriptionController)
 
 export default router
