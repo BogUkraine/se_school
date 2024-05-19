@@ -21,6 +21,8 @@ export const rateController = async (req: Request, res: Response) => {
 export const subscriptionController = async (req: Request, res: Response) => {
     try {
         const data: SubscriptionInput = req.body
+
+        // that logic should go to the base class
         const validationErrors = await validate(new SubscriptionInputValidator(data.email))
         if (validationErrors.length) {
             return res.status(400).send({ errors: validationErrors.map((item) => item.constraints) })

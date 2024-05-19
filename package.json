@@ -7,7 +7,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "npm run migration:run && NODE_ENV=development tsx src/index.ts",
-    "dev": "NODE_ENV=development tsx watch src/index.ts",
+    "dev": "npm run migration:run && NODE_ENV=development tsx watch src/index.ts",
     "build": "tsc",
     "prod": "NODE_ENV=production node ./dist/index.js",
     "env:dev": "docker-compose --project-directory ./ -f ./environments/dev.yaml --env-file ./.env.development up",
